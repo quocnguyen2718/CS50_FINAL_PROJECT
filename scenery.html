@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Scenery
+{% endblock %}
+
+{% block main %}
+    <h1>Choose a goal to display scene</h1>
+        <form action="/scenery" method="post">
+        <select name="option" class="form-outline mb-3">
+            <option disabled selected value="">Goal</option>
+            {% for goal in goals %}
+                <option>{{ goal.name }}</option>
+            {% endfor %}
+        </select>
+        <div>
+            <button type="submit" class="btn btn-primary btn-block mb-4">
+                Enter
+              </button>
+        </div>
+        </form>
+    <div class="container-fluid h-custom">
+        <img class="img-fluid" src = {{ img }}>
+    </div>
+{% endblock %}

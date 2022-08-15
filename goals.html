@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    HOME
+{% endblock %}
+
+{% block main %}
+    <h1>Your Goals</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Goal</th>
+                <th scope="col">Hours Completed</th>
+                <th scope="col">Delete Goal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for goal in goals %}
+            <tr>
+                <td>{{ goal.name }}</td>
+                <td>{{ goal.set_goal }}</td>
+                <td>{{ goal.completed_hours }}</td>
+                <td>
+                    <form action="/delete" method="post">
+                        <input name="delete" type="hidden" value="{{ goal["name"] }}">
+                        <button type="submit" class="btn btn-outline-dark btn-sm">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

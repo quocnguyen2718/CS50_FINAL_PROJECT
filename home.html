@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    HOME
+{% endblock %}
+
+{% block main %}
+
+    <div>
+        <h1 class="center">WELCOME</h1>
+    </div>
+    <section class="vh-100">
+        <div class="container-fluid h-custom">
+          <div class="row justify-content-md-center">
+            <div class="col">
+                <h2>Add New Goal</h2>
+                <form action="/" method="post">
+                    <div class="form-outline mb-3">
+                        <input type="text" class="form-control" id="goal_name" name="goal_name" placeholer="Name" autofocus>
+                        <label class="form-label" for="goals">Goal Name</label>
+                    </div>
+                    <div class="form-outline mb-3">
+                        <input type="number" class="form-control" id="hours" name="hours" placeholer="Hours" autofocus>
+                        <label class="form-label" for="hours">Hours</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block mb-4">
+                        Enter
+                      </button>
+                </form>
+            </div>
+            <div class="col-md-auto">
+                OR
+            </div>
+            <div class="col">
+                <h2>Update Hours On Previous Goal</h2>
+                <form action="/" method="post">
+                <select name="option" class="form-outline mb-3">
+                    <option disabled selected value="">Goal</option>
+                    {% for goal in goals %}
+                        <option>{{ goal.name }}</option>
+                    {% endfor %}
+                </select>
+                <div class="form-outline mb-3">
+                    <input type="number" class="form-control" id="add_hours" name="add_hours" placeholer="Hours" autofocus>
+                    <label class="form-label" for="hours">Add Hours</label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block mb-4">
+                    Enter
+                  </button>
+                </form>
+          </div>
+        </div>
+      </section>
+{% endblock %}
